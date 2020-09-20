@@ -3,7 +3,7 @@
 
 int main()
 {
-    double x = -100000009000009;
+    double x = -1;
     classify(x);
 
     for (int i = 0; i < 64; ++i)
