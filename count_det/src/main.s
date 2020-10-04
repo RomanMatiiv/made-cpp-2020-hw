@@ -6,6 +6,8 @@ count_det:
         //a21 a22 a23
         //a31 a32 a33
 
+        push {r4}
+
         // a11 * a22 * a33
         ldr r2, [r0, #4 * 0]
         ldr r3, [r0, #4 * 4]
@@ -61,4 +63,7 @@ count_det:
         sub r1, r2
 
         mov r0, r1
+
+        pop {r4}
+
         bx lr
