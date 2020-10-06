@@ -19,6 +19,12 @@ vector<double> operator+(const vector<double> & a, const vector<double> & b)
     return tmp;
 }
 
+// унарный + для векторов
+vector<double> & operator+(const vector<double> & value)
+{
+    return const_cast<vector<double> &>(value);
+}
+
 // бинарный - для векторов
 vector<double> operator-(const vector<double> & a, const vector<double> & b)
 {
@@ -32,14 +38,21 @@ vector<double> operator-(const vector<double> & a, const vector<double> & b)
     return tmp;
 }
 
+// унарный - для векторов
+//vector<double> & operator-(const vector<double> & value)
+//{
+//}
+
 // переставляет элементы вектора в обратном порядке
 vector<double> reverse(const vector<double> & a)
 {
     vector<double> tmp (a.size());
 
-    for (unsigned i = (a.size() - 1); i >= 0; --i)
+    size_t last_index = a.size() - 1;
+
+    for (ssize_t i = last_index; i >= 0; --i)
     {
-        tmp[i] = a[i];
+        tmp[last_index - i] = a[i];
     }
 
     return tmp;
@@ -59,27 +72,36 @@ double operator*(const vector<double> & a, const vector<double> & b)
 }
 
 // векторное произведение
-double operator%(const vector<double> & a, const vector<double> & b)
-{
+//double operator%(const vector<double> & a, const vector<double> & b)
+//{
+//
+//}
 
+
+// битовая | операция поэлементно
+vector<int> operator|(const vector<int> & a, const vector<int> & b)
+{
+    vector<int> tmp (a.size());
+
+    for (int i = 0; i < a.size(); ++i)
+    {
+        tmp[i] = a[i] | b[i];
+    }
+
+    return tmp;
 }
 
-//vector<double> & operator+(const vector<double> & value)
-//{
-//    return const_cast<vector<double> &>(value);
-//}
-//
-//vector<double> & operator-(vector<double> & value )
-//{
-//
-//}
+// битовая & операция поэлементно
+vector<int> operator&(const vector<int> & a, const vector<int> & b)
+{
+    vector<int> tmp (a.size());
 
+    for (int i = 0; i < a.size(); ++i)
+    {
+        tmp[i] = a[i] & b[i];
+    }
 
-
-//    R operator %(K a, S b);
-//    bool operator ||(K a, S b);
-//    bool operator &&(K a, S b);
-//    R operator <<(K a, S b);
-//    R operator >>(K a, S b);
+    return tmp;
+}
 
 }
