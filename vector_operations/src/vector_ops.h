@@ -3,6 +3,8 @@
 #include <iostream>
 
 using std::vector;
+using std::ostream;
+using std::istream;
 
 namespace task
 {
@@ -114,7 +116,7 @@ vector<int> operator&(const vector<int> & a, const vector<int> & b)
 }
 
 // потоковый ввод
-std::istream & operator>>(std::istream & is, vector<double> & value )
+istream & operator>>(istream & is, vector<double> & value )
 {
     int n;
     is >> n;
@@ -130,7 +132,7 @@ std::istream & operator>>(std::istream & is, vector<double> & value )
 }
 
 // потоковый вывод
-std::ostream & operator<<(std::ostream & os, vector<double> const & value )
+ostream & operator<<(ostream & os, vector<double> const & value )
 {
     for (double val: value)
         os << val << ' ';
