@@ -11,7 +11,11 @@ public:
 
     Matrix(size_t rows, size_t cols)
     {
-
+        matrix = create_matrix(rows, cols);
+    }
+    ~Matrix()
+    {
+        delete_matrix(matrix);
     }
 //    Matrix(const Matrix& copy);
 //    Matrix& operator=(const Matrix& a);
@@ -49,5 +53,29 @@ public:
 //    bool operator!=(const Matrix& a) const;
 
     // Your code goes here...
+private:
+
+    double** matrix;
+
+    double** create_matrix(size_t rows, size_t cols)
+    {
+        size_t n_elements = rows * cols;
+        double** array = new double* [rows];
+        array[0] = new double[n_elements];
+
+        for (int i = 0; i < rows; ++i)
+        {
+            array[i] = &array[0][i * cols];
+        }
+
+        return array;
+    }
+
+    void delete_matrix(double** array)
+    {
+        delete [] array[0];
+
+        delete [] array;
+    }
 
 };
