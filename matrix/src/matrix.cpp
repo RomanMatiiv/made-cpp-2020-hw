@@ -7,12 +7,16 @@ class Matrix
 {
 public:
 
-    Matrix() = default;
+    Matrix()
+    {
+        matrix = create_matrix(1,1);
+    }
 
     Matrix(size_t rows, size_t cols)
     {
         matrix = create_matrix(rows, cols);
     }
+
     ~Matrix()
     {
         delete_matrix(matrix);
